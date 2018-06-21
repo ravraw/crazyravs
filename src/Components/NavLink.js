@@ -8,7 +8,8 @@ const NavLink = styled.a`
   align-items: center;
   text-decoration: none;
   /* border: 1px solid red; */
-  &:hover {
+  &:hover,
+  &:active {
     color: tomato;
     fill: tomato;
     transform: scale(1.1);
