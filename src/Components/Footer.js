@@ -1,9 +1,19 @@
 import styled from "styled-components";
+import React from "react";
 
-const footer = styled.footer`
-  width: 100%;
-  height: 5vh;
-  background: gray;
+const Footer = styled.footer`
+  height: 5%;
+  color: tomato;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Architects Daughter", cursive;
 `;
 
-export default footer;
+export default () => {
+  return (
+    <Footer>
+      <p>&copy;2018 CRAZY RAV'S ALL RIGHTS RESERVED</p>
+    </Footer>
+  );
+};

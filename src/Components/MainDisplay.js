@@ -1,10 +1,13 @@
 import styled from "styled-components";
+import React from "react";
 
-const mainDisplay = styled.main`
-  width: 85%;
-  height: 100%;
-  background: yellow;
-  display: inline-block;
+const MainDisplay = styled.section`
+  width: 90%;
+  min-width: 240px;
+  overflow: scroll;
+  background: #ccc;
 `;
 
-export default mainDisplay;
+export default () => {
+  return <MainDisplay />;
+};

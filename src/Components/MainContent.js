@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-const mainContent = styled.section`
-  width: 100%;
-  height: 80vh;
-  background: pink;
+const MainContent = styled.main`
+  height: 80%;
+  display: flex;
 `;
 
-export default mainContent;
+export default MainContent;
