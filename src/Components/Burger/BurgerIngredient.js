@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const BreadTop = styled.div`
   height: 20%;
@@ -113,59 +113,54 @@ const Bacon = styled.div`
   margin: 2% auto;
 `;
 
-const 
-
 const BurgerIngredient = props => {
-let ingredient = null;
+  const ingredientChoices = {
+    "bread-top": (
+      <BreadTop>
+        <Seeds1 />
+        <Seeds2 />
+      </BreadTop>
+    ),
+    "bread-bottom": <BreadBottom />,
+    meat: <Meat />,
+    cheese: <Cheese />,
+    salad: <Salad />,
+    bacon: <Bacon />
+  };
 
-const ingredientChoices = {
-    "bread-top":<BreadTop>
-    <Seeds1 />
-    <Seeds2 />
-  </BreadTop>,
-  "bread-bottom":<BreadBottom/>,
-  "meat":<Meat/>,
-  "cheese":<Cheese/>,
-  "salad":<Salad/>,
-  "bacon":<Bacon/>
-}
-
-
-//   switch (props.type) {
-//     case "bread-top":
-//       ingredient = (
-//         <BreadTop>
-//           <Seeds1 />
-//           <Seeds2 />
-//         </BreadTop>
-//       );
-//       break;
-//     case "bread-bottom":
-//       ingredient = <BreadBottom />;
-//       break;
-//     case "meat":
-//       ingredient = <Meat />;
-//       break;
-//     case "cheese":
-//       ingredient = <Cheese />;
-//       break;
-//     case "salad":
-//       ingredient = <Salad />;
-//       break;
-//     case "bacon":
-//       ingredient = <Bacon />;
-//       break;
-//     default:
-//       ingredient = null;
-//   }
-
+  //   switch (props.type) {
+  //     case "bread-top":
+  //       ingredient = (
+  //         <BreadTop>
+  //           <Seeds1 />
+  //           <Seeds2 />
+  //         </BreadTop>
+  //       );
+  //       break;
+  //     case "bread-bottom":
+  //       ingredient = <BreadBottom />;
+  //       break;
+  //     case "meat":
+  //       ingredient = <Meat />;
+  //       break;
+  //     case "cheese":
+  //       ingredient = <Cheese />;
+  //       break;
+  //     case "salad":
+  //       ingredient = <Salad />;
+  //       break;
+  //     case "bacon":
+  //       ingredient = <Bacon />;
+  //       break;
+  //     default:
+  //       ingredient = null;
+  //   }
 
   return ingredientChoices[props.type];
 };
 
 BurgerIngredient.PropTypes = {
-    type:PropTypes.string.isRequired
-}
+  type: PropTypes.string.isRequired
+};
 
-
-export default burgerIngredient;
+export default BurgerIngredient;

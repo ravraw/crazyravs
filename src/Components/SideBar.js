@@ -6,6 +6,10 @@ const SideBar = styled.aside`
   width: 15%;
   min-width: 120px;
   overflow: scroll;
+
+  @media (max-width: 375px) {
+    display: none;
+  }
 `;
 
 const Nav = styled.nav`
