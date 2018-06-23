@@ -49,7 +49,7 @@ export default props => {
   return (
     <Li>
       <img src={`./image/${props.imageName}.jpg`} alt={props.imageName} />
-      <h3 class="menu-item__name">{props.burgerName}</h3>
+      <h3>{props.burgerName}</h3>
       <h3>$12</h3>
       <p>{props.burgerDescription}</p>
       <button>order</button>

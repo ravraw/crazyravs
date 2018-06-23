@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import React from "react";
-import DisplayItem from "./DisplayItem";
+// import DisplayItem from "./DisplayItem";
+import BurgerBuilder from "../Containers/BurgerBuilder/BurgerBuilder";
 
 const MainDisplay = styled.section`
   width: 90%;
   min-width: 240px;
   overflow: scroll;
   background: #ccc;
+  flex: 1;
   & > ul {
     margin: 1.7em;
     padding: 0;
@@ -24,7 +26,7 @@ const MainDisplay = styled.section`
 export default () => {
   return (
     <MainDisplay>
-      <ul>
+      {/* <ul>
         <DisplayItem
           imageName="burger"
           burgerName="the boss burger"
@@ -95,7 +97,9 @@ export default () => {
           burgerName="the boss burger"
           burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
         />
-      </ul>
+      </ul> */}
+
+      <BurgerBuilder />
     </MainDisplay>
   );
 };
