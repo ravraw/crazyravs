@@ -8,11 +8,7 @@ const Container = styled.div`
 
 class BurgerBuilder extends Component {
   render() {
-    return (
-      <Container>{/* <div>
-          <h1>Hello</h1>
-        </div> */}</Container>
-    );
+    return <Container />;
   }
 }
 

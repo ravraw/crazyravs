@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from 'prop-types';
 
 const BreadTop = styled.div`
   height: 20%;
@@ -161,4 +162,10 @@ const ingredientChoices = {
 
   return ingredientChoices[props.type];
 };
+
+BurgerIngredient.PropTypes = {
+    type:PropTypes.string.isRequired
+}
+
+
 export default burgerIngredient;
