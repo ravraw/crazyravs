@@ -3,15 +3,15 @@ import React from "react";
 import HeaderRight from "./HeaderRight";
 
 const Header = styled.header`
-  height: 15%;
+  height: 12%;
   width: 100%;
   display: flex;
   position: relative;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); */
 `;
 
 const HeaderLeft = styled.div`
-  width: 15%;
+  width: 12%;
   position: relative;
 
   &:hover {
@@ -27,8 +27,8 @@ const HeaderLeft = styled.div`
   }
 `;
 const Svg = styled.svg`
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 `;
 
 export default props => {

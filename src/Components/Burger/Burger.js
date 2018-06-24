@@ -3,9 +3,8 @@ import styled from "styled-components";
 import BurgerIngredient from "./BurgerIngredient";
 
 const Wrapper = styled.div`
-  width: 100%;
   margin: auto;
-  height: 250px;
+  height: 70%;
   overflow: scroll;
   text-align: center;
   font-weight: bold;

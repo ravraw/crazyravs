@@ -3,8 +3,8 @@ import React from "react";
 import NavItem from "./NavItem";
 
 const SideBar = styled.aside`
-  width: 15%;
-  min-width: 120px;
+  width: 10%;
+  min-width: 100px;
   overflow: scroll;
 
   @media (max-width: 375px) {
