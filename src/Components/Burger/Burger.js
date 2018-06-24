@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   font-size: 1.2rem;
 
   @media (min-width: 500px) and (min-height: 400px) {
-    width: 350px;
+    width: 50%;
     height: 300px;
   }
 
@@ -27,14 +27,30 @@ const Wrapper = styled.div`
   }
 `;
 
+// Converts ingredients object recieved as props into individual BurgerIngredient component.
+// 1) Generates an arrays of ingredient names(Keys).
+// 2) Uses Map on the keys array to crete Array with .length equal to quantity of the ingredient .
+// 3) Uses Map on the new empty array, and return <BurgerIngredient /> component with keyand type as props
+
 const burger = props => {
+  let transformedIngredients = Object.keys(props.ingredients)
+    .map(igKey => {
+      return [...Array(props.ingredients[igKey])].map((_, i) => {
+        return <BurgerIngredient key={igKey + i} type={igKey} />;
+      });
+    })
+    .reduce((prev, curr) => {
+      return prev.concat(curr);
+    });
+
+  if (transformedIngredients.length === 0) {
+    transformedIngredients = <p>Please start adding ingredients.....</p>;
+  }
+
   return (
     <Wrapper>
       <BurgerIngredient type="bread-top" />
-      <BurgerIngredient type="bacon" />
-      <BurgerIngredient type="cheese" />
-      <BurgerIngredient type="meat" />
-      <BurgerIngredient type="salad" />
+      {transformedIngredients}
       <BurgerIngredient type="bread-bottom" />
     </Wrapper>
   );
