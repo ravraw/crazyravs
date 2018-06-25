@@ -7,7 +7,7 @@ const MainDisplay = styled.section`
   width: 90%;
   min-width: 240px;
   overflow: scroll;
-  background: #ccc;
+  /* background: #ccc; */
   border-radius: 10px;
   box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.3);
   flex: 1;

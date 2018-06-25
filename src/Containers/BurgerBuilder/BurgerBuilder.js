@@ -73,11 +73,12 @@ const BuildControlsData = [
   {
     label: "sauce option",
     options: [
-      { label: "option1", price: 1 },
-      { label: "option2", price: 1 },
-      { label: "option3", price: 1 },
-      { label: "option4", price: 1 },
-      { label: "option5", price: 1 }
+      { label: "salad", price: 1 },
+      { label: "salad", price: 1 },
+      { label: "salad", price: 1 },
+      { label: "salad", price: 1 },
+      { label: "salad", price: 1 },
+      { label: "salad", price: 1 }
     ],
     type: "bacon"
   }
@@ -86,24 +87,72 @@ const BuildControlsData = [
 class BurgerBuilder extends Component {
   state = {
     ingredients: {
-      salad: 1,
-      bacon: 1,
-      cheese: 1,
-      meat: 1
+      // salad: 1,
+      // bacon: 1,
+      // cheese: 1,
+      // meat: 1
     },
     totalPrice: 4
   };
 
-  addIngredientHandler = type => {
-    const oldCount = this.state.ingredients[type];
-    const newCount = oldCount + 1;
+  addIngredientHandler = (type, name) => {
+    const oldCount =
+      this.state.ingredients[name] === undefined
+        ? 0
+        : this.state.ingredients[name];
+    const updatedCount = oldCount + 1;
+    const updatedIngredients = { ...this.state.ingredients };
+    updatedIngredients[name] = updatedCount;
+
     const oldPrice = this.state.totalPrice;
+
+    const itemPrice = BuildControlsData.filter(el => el.label === type).map(
+      el => el.options.filter(el => el.label === name).map(el => el.price)
+    );
+
+    const newPrice = oldPrice + Number(itemPrice[0]);
+
+    this.setState({
+      totalPrice: newPrice,
+      ingredients: updatedIngredients
+    });
+  };
+
+  removeIngredientHandler = (controlType, controlName) => {
+    const oldCount =
+      this.state.ingredients[controlName] === undefined
+        ? 0
+        : this.state.ingredients[controlName];
+    const updatedCount = oldCount === 0 ? 0 : oldCount - 1;
+    const updatedIngredients = { ...this.state.ingredients };
+    updatedIngredients[controlName] = updatedCount;
+
+    const oldPrice = this.state.totalPrice;
+
+    const itemPrice = BuildControlsData.filter(
+      el => el.label === controlType
+    ).map(el =>
+      el.options.filter(el => el.label === controlName).map(el => el.price)
+    );
+
+    const newPrice = oldPrice - Number(itemPrice[0]);
+
+    this.setState({
+      totalPrice: newPrice,
+      ingredients: updatedIngredients
+    });
   };
 
   render() {
     return (
       <Container>
-        <BuildControls data={BuildControlsData} />
+        <BuildControls
+          ingredients={this.state.ingredients}
+          totalPrice={this.state.totalPrice}
+          data={BuildControlsData}
+          add={this.addIngredientHandler}
+          remove={this.removeIngredientHandler}
+        />
         <Burger ingredients={this.state.ingredients} />
       </Container>
     );

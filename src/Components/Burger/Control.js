@@ -38,9 +38,23 @@ export default props => {
   return (
     <Control>
       <h4>{props.label}</h4>
+      <p>{props.count === 0 ? null : props.count}</p>
       <p>${props.price}</p>
-      <button class="less">LESS</button>
-      <button class="more">MORE</button>
+      <button
+        className="less"
+        onClick={() => {
+          props.remove(props.controlType, props.label);
+          console.log(props);
+        }}
+      >
+        LESS
+      </button>
+      <button
+        className="more"
+        onClick={() => props.add(props.controlType, props.label)}
+      >
+        MORE
+      </button>
     </Control>
   );
 };

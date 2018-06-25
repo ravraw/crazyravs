@@ -125,7 +125,12 @@ const BurgerIngredient = props => {
     meat: <Meat />,
     cheese: <Cheese />,
     salad: <Salad />,
-    bacon: <Bacon />
+    bacon: <Bacon />,
+    option1: <Meat />,
+    option2: <Cheese />,
+    option3: <Salad />,
+    option4: <Bacon />,
+    option5: <BreadBottom />
   };
 
   //   switch (props.type) {
