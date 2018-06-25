@@ -52,6 +52,9 @@ const OrderTotal = styled.div`
     color: white;
     border-radius: 50px;
     cursor: pointer;
+    &:disabled {
+      background: gray;
+    }
   }
 `;
 
@@ -59,8 +62,8 @@ export default props => {
   return (
     <BuildControls>
       <OrderTotal>
-        <h3>Total Price : ${props.totalPrice} </h3>
-        <button>PLACE ORDER</button>
+        <h3>Total Price : ${props.totalPrice.toFixed(2)} </h3>
+        <button disabled={!props.purchasable}>PLACE ORDER</button>
       </OrderTotal>
 
       {props.data.map(type => (

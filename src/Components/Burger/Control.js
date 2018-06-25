@@ -12,25 +12,27 @@ const Control = styled.div`
     text-align: left;
     text-transform: capitalize;
   }
-  .less {
-    background: red;
-  }
-  .more {
-    background: green;
-  }
   > p {
     width: 20%;
     color: blue;
     text-align: center;
     display: inline-block;
   }
-
   > button {
     margin: 0 5px;
     width: 25%;
     display: block;
     background: gray;
     color: white;
+  }
+  .less {
+    background: red;
+    &:disabled {
+      background: gray;
+    }
+  }
+  .more {
+    background: green;
   }
 `;
 
@@ -39,9 +41,10 @@ export default props => {
     <Control>
       <h4>{props.label}</h4>
       <p>{props.count === 0 ? null : props.count}</p>
-      <p>${props.price}</p>
+      <p>${props.price.toFixed(2)}</p>
       <button
         className="less"
+        disabled={props.count < 1 || props.count === undefined}
         onClick={event => {
           props.remove(props.controlType, props.label);
           console.log(props);

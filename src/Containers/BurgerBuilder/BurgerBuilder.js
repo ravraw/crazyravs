@@ -73,12 +73,11 @@ const BuildControlsData = [
   {
     label: "sauce option",
     options: [
-      { label: "salad", price: 1 },
-      { label: "salad", price: 1 },
-      { label: "salad", price: 1 },
-      { label: "salad", price: 1 },
-      { label: "salad", price: 1 },
-      { label: "salad", price: 1 }
+      { label: "option1", price: 1 },
+      { label: "option2", price: 1 },
+      { label: "option3", price: 1 },
+      { label: "option4", price: 1 },
+      { label: "option5", price: 1 }
     ],
     type: "bacon"
   }
@@ -92,7 +91,18 @@ class BurgerBuilder extends Component {
       // cheese: 1,
       // meat: 1
     },
-    totalPrice: 4
+    totalPrice: 4,
+    purchasable: false
+  };
+
+  updatePurchaseState = ingredients => {
+    const sum = Object.keys(ingredients)
+      .map(key => ingredients[key])
+      .reduce((prev, curr) => {
+        return prev + curr;
+      }, 0);
+    console.log(sum);
+    this.setState({ purchasable: sum > 0 });
   };
 
   addIngredientHandler = (type, name) => {
@@ -116,6 +126,7 @@ class BurgerBuilder extends Component {
       totalPrice: newPrice,
       ingredients: updatedIngredients
     });
+    this.updatePurchaseState(updatedIngredients);
   };
 
   removeIngredientHandler = (controlType, controlName) => {
@@ -140,38 +151,15 @@ class BurgerBuilder extends Component {
         totalPrice: newPrice,
         ingredients: updatedIngredients
       });
+      this.updatePurchaseState(updatedIngredients);
     }
-
-    // const oldCount =
-    //   this.state.ingredients[controlName] === undefined
-    //     ? 0
-    //     : this.state.ingredients[controlName];
-    // const updatedCount = oldCount === 0 ? 0 : oldCount - 1;
-    // const updatedIngredients = { ...this.state.ingredients };
-    // updatedIngredients[controlName] = updatedCount;
-
-    // const oldPrice = this.state.totalPrice;
-
-    // const itemPrice = BuildControlsData.filter(
-    //   el => el.label === controlType
-    // ).map(el =>
-    //   el.options.filter(el => el.label === controlName).map(el => el.price)
-    // );
-
-    // if (this.state.ingredients[controlName] !== undefined) {
-    //   newPrice = oldPrice === 4 ? 4 : oldPrice - Number(itemPrice[0]);
-    // }
-
-    // this.setState({
-    //   totalPrice: newPrice,
-    //   ingredients: updatedIngredients
-    // });
   };
 
   render() {
     return (
       <Container>
         <BuildControls
+          purchasable={this.state.purchasable}
           ingredients={this.state.ingredients}
           totalPrice={this.state.totalPrice}
           data={BuildControlsData}
