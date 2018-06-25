@@ -42,7 +42,7 @@ export default props => {
       <p>${props.price}</p>
       <button
         className="less"
-        onClick={() => {
+        onClick={event => {
           props.remove(props.controlType, props.label);
           console.log(props);
         }}

@@ -119,28 +119,53 @@ class BurgerBuilder extends Component {
   };
 
   removeIngredientHandler = (controlType, controlName) => {
-    const oldCount =
-      this.state.ingredients[controlName] === undefined
-        ? 0
-        : this.state.ingredients[controlName];
-    const updatedCount = oldCount === 0 ? 0 : oldCount - 1;
-    const updatedIngredients = { ...this.state.ingredients };
-    updatedIngredients[controlName] = updatedCount;
+    if (this.state.ingredients[controlName] !== undefined) {
+      const oldCount = this.state.ingredients[controlName];
+      const updatedCount = oldCount === 0 ? 0 : oldCount - 1;
+      const updatedIngredients = { ...this.state.ingredients };
+      updatedIngredients[controlName] = updatedCount;
+      const oldPrice = this.state.totalPrice;
+      const itemPrice = BuildControlsData.filter(
+        el => el.label === controlType
+      ).map(el =>
+        el.options.filter(el => el.label === controlName).map(el => el.price)
+      );
+      let newPrice = oldPrice;
+      if (oldCount > 0) {
+        newPrice = oldPrice > 4 ? oldPrice - itemPrice : oldPrice;
+      }
 
-    const oldPrice = this.state.totalPrice;
+      console.log(itemPrice, newPrice);
+      this.setState({
+        totalPrice: newPrice,
+        ingredients: updatedIngredients
+      });
+    }
 
-    const itemPrice = BuildControlsData.filter(
-      el => el.label === controlType
-    ).map(el =>
-      el.options.filter(el => el.label === controlName).map(el => el.price)
-    );
+    // const oldCount =
+    //   this.state.ingredients[controlName] === undefined
+    //     ? 0
+    //     : this.state.ingredients[controlName];
+    // const updatedCount = oldCount === 0 ? 0 : oldCount - 1;
+    // const updatedIngredients = { ...this.state.ingredients };
+    // updatedIngredients[controlName] = updatedCount;
 
-    const newPrice = oldPrice === 4 ? 4 : oldPrice - Number(itemPrice[0]);
+    // const oldPrice = this.state.totalPrice;
 
-    this.setState({
-      totalPrice: newPrice,
-      ingredients: updatedIngredients
-    });
+    // const itemPrice = BuildControlsData.filter(
+    //   el => el.label === controlType
+    // ).map(el =>
+    //   el.options.filter(el => el.label === controlName).map(el => el.price)
+    // );
+
+    // if (this.state.ingredients[controlName] !== undefined) {
+    //   newPrice = oldPrice === 4 ? 4 : oldPrice - Number(itemPrice[0]);
+    // }
+
+    // this.setState({
+    //   totalPrice: newPrice,
+    //   ingredients: updatedIngredients
+    // });
   };
 
   render() {

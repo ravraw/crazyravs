@@ -14,6 +14,8 @@ const BuildControls = styled.div`
   /* background: lightblue; */
   overflow: scroll;
   grid-auto-rows: 1fr;
+  border-radius: 10px 0px 0px 10px;
+  border: 1px solid lightgray;
   /* box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.3); */
 
   @media (max-width: 900px) {
@@ -27,8 +29,8 @@ const OrderTotal = styled.div`
   width: 100%;
   height: auto;
   display: flex;
-  border: 1px solid gray;
-  border-radius: 5px;
+  /* border: 1px solid gray; */
+  border-radius: 10px 0px 0px 0px;
   grid-column: 1 / 3;
   background: pink;
   justify-content: space-around;

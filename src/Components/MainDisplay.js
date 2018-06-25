@@ -9,7 +9,7 @@ const MainDisplay = styled.section`
   overflow: scroll;
   /* background: #ccc; */
   /* border: 1px solid black; */
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
   flex: 1;
   & > ul {
