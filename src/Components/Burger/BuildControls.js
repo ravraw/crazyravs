@@ -11,9 +11,10 @@ const BuildControls = styled.div`
   align-items: stretch;
   width: 70%;
   height: 100%;
-  /* background:lightblue; */
+  /* background: lightblue; */
   overflow: scroll;
   grid-auto-rows: 1fr;
+  /* box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.3); */
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
@@ -27,11 +28,12 @@ const OrderTotal = styled.div`
   height: auto;
   display: flex;
   border: 1px solid gray;
-  border-radius: 15px;
+  border-radius: 5px;
   grid-column: 1 / 3;
   background: pink;
   justify-content: space-around;
   align-items: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 
   > h3 {
     width: 60%;

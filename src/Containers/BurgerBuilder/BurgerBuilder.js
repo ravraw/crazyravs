@@ -135,7 +135,7 @@ class BurgerBuilder extends Component {
       el.options.filter(el => el.label === controlName).map(el => el.price)
     );
 
-    const newPrice = oldPrice - Number(itemPrice[0]);
+    const newPrice = oldPrice === 4 ? 4 : oldPrice - Number(itemPrice[0]);
 
     this.setState({
       totalPrice: newPrice,

@@ -5,7 +5,7 @@ const ControlTypes = styled.div`
   display: flex;
   flex-direction: column;
   /* border: 1px solid #ccc; */
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); */
   margin: 10px 5px;
   padding: 20px;
   > h3 {

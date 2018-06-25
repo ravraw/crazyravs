@@ -8,8 +8,9 @@ const MainDisplay = styled.section`
   min-width: 240px;
   overflow: scroll;
   /* background: #ccc; */
-  border-radius: 10px;
-  box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.3);
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
   flex: 1;
   & > ul {
     margin: 1.7em;
