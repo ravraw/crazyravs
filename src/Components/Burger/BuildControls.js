@@ -3,6 +3,9 @@ import styled from "styled-components";
 import Control from "./Control";
 import ControlTypes from "./ControlTypes";
 
+import Modal from "../UI//Modal";
+import OrderSummary from "./OrderSummary";
+
 const BuildControls = styled.div`
   position: relative;
   display: grid;
@@ -61,9 +64,18 @@ const OrderTotal = styled.div`
 export default props => {
   return (
     <BuildControls>
+      <Modal purchasing={props.purchasing}>
+        <OrderSummary
+          totalPrice={props.totalPrice.toFixed(2)}
+          ingredients={props.ingredients}
+        />
+      </Modal>
+
       <OrderTotal>
         <h3>Total Price : ${props.totalPrice.toFixed(2)} </h3>
-        <button disabled={!props.purchasable}>PLACE ORDER</button>
+        <button onClick={props.purchasingHandler} disabled={!props.purchasable}>
+          PLACE ORDER
+        </button>
       </OrderTotal>
 
       {props.data.map(type => (

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Burger from "../../Components/Burger/Burger";
 import BuildControls from "../../Components/Burger/BuildControls";
+
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -91,18 +92,27 @@ class BurgerBuilder extends Component {
       // cheese: 1,
       // meat: 1
     },
+
     totalPrice: 4,
-    purchasable: false
+    purchasable: false,
+    purchasing: false
   };
 
   updatePurchaseState = ingredients => {
-    const sum = Object.keys(ingredients)
-      .map(key => ingredients[key])
+    const sum = Object.values(ingredients)
+      // .map(key => ingredients[key])
       .reduce((prev, curr) => {
         return prev + curr;
       }, 0);
     console.log(sum);
     this.setState({ purchasable: sum > 0 });
+  };
+
+  purchasingHandler = () => {
+    this.setState({
+      purchasing: true
+    });
+    console.log("clicked", this.state.purchasing);
   };
 
   addIngredientHandler = (type, name) => {
@@ -143,7 +153,7 @@ class BurgerBuilder extends Component {
       );
       let newPrice = oldPrice;
       if (oldCount > 0) {
-        newPrice = oldPrice > 4 ? oldPrice - itemPrice : oldPrice;
+        newPrice = oldPrice > 4 ? oldPrice - itemPrice : oldPrice; // need to chage to avoid hard coding
       }
 
       console.log(itemPrice, newPrice);
@@ -160,12 +170,15 @@ class BurgerBuilder extends Component {
       <Container>
         <BuildControls
           purchasable={this.state.purchasable}
+          purchasing={this.state.purchasing}
           ingredients={this.state.ingredients}
           totalPrice={this.state.totalPrice}
           data={BuildControlsData}
           add={this.addIngredientHandler}
           remove={this.removeIngredientHandler}
+          purchasingHandler={this.purchasingHandler}
         />
+
         <Burger ingredients={this.state.ingredients} />
       </Container>
     );
