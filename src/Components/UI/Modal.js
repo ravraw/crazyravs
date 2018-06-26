@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Backdrop from "./Backdrop";
 
 const Modal = styled.div`
   position: fixed;
@@ -22,15 +23,21 @@ const Modal = styled.div`
 
 export default props => {
   return (
-    <Modal
-      style={{
-        transform: props.purchasing
-          ? "translateY(-25vh) translateX(-50vh)"
-          : "translateY(-100vh) translateX(-50vh)",
-        opacity: props.purchasing ? "1" : "0"
-      }}
-    >
-      {props.children}
-    </Modal>
+    <React-Fragment>
+      <Backdrop
+        purchasing={props.purchasing}
+        cancelPurchasing={props.cancelPurchasing}
+      />
+      <Modal
+        style={{
+          transform: props.purchasing
+            ? "translateY(-25vh) translateX(-50vh)"
+            : "translateY(-100vh) translateX(-50vh)",
+          opacity: props.purchasing ? "1" : "0"
+        }}
+      >
+        {props.children}
+      </Modal>
+    </React-Fragment>
   );
 };

@@ -112,7 +112,12 @@ class BurgerBuilder extends Component {
     this.setState({
       purchasing: true
     });
-    console.log("clicked", this.state.purchasing);
+  };
+
+  cancelPurchasingHandler = () => {
+    this.setState({
+      purchasing: false
+    });
   };
 
   addIngredientHandler = (type, name) => {
@@ -177,6 +182,7 @@ class BurgerBuilder extends Component {
           add={this.addIngredientHandler}
           remove={this.removeIngredientHandler}
           purchasingHandler={this.purchasingHandler}
+          cancelPurchasing={this.cancelPurchasingHandler}
         />
 
         <Burger ingredients={this.state.ingredients} />

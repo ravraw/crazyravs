@@ -4,7 +4,7 @@ import BurgerIngredient from "./BurgerIngredient";
 
 const Wrapper = styled.div`
   margin: auto;
-  height: 70%;
+  height: 100%;
   overflow: scroll;
   text-align: center;
   font-weight: bold;

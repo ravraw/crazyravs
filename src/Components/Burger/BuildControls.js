@@ -17,8 +17,8 @@ const BuildControls = styled.div`
   /* background: lightblue; */
   overflow: scroll;
   grid-auto-rows: 1fr;
-  border-radius: 10px 0px 0px 10px;
-  border: 1px solid lightgray;
+  /* border-radius: 10px 0px 0px 10px;
+  border: 1px solid lightgray; */
   /* box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.3); */
 
   @media (max-width: 900px) {
@@ -64,10 +64,14 @@ const OrderTotal = styled.div`
 export default props => {
   return (
     <BuildControls>
-      <Modal purchasing={props.purchasing}>
+      <Modal
+        purchasing={props.purchasing}
+        cancelPurchasing={props.cancelPurchasing}
+      >
         <OrderSummary
           totalPrice={props.totalPrice.toFixed(2)}
           ingredients={props.ingredients}
+          cancelPurchasing={props.cancelPurchasing}
         />
       </Modal>
 

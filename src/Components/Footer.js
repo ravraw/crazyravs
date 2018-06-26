@@ -9,6 +9,7 @@ const Footer = styled.footer`
   justify-content: center;
   font-family: "Architects Daughter", cursive;
   font-size: 1.3em;
+  background: tomato;
 `;
 
 export default () => {

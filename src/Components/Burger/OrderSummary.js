@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "../UI/Button";
 
 const OrderSummary = styled.div`
   width: 100%;
@@ -30,6 +31,10 @@ export default props => {
 
       <h3>Total Price: {props.totalPrice}</h3>
       <p>Continue to checkout ?</p>
+      <Button red onClick={props.cancelPurchasing}>
+        Cancel
+      </Button>
+      <Button onClick={() => alert("Continue")}>Continue</Button>
     </OrderSummary>
   );
 };

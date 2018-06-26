@@ -7,6 +7,7 @@ const Header = styled.header`
   width: 100%;
   display: flex;
   position: relative;
+  background: tomato;
   /* box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); */
 `;
 
