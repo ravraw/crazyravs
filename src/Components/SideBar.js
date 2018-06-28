@@ -6,7 +6,7 @@ const SideBar = styled.aside`
   width: 10%;
   min-width: 100px;
   overflow: scroll;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
   @media (max-width: 375px) {
     display: none;

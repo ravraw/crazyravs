@@ -72,6 +72,7 @@ export default props => {
           totalPrice={props.totalPrice.toFixed(2)}
           ingredients={props.ingredients}
           cancelPurchasing={props.cancelPurchasing}
+          continuePurchasing={props.continuePurchasing}
         />
       </Modal>
 

@@ -34,7 +34,7 @@ export default props => {
       <Button red onClick={props.cancelPurchasing}>
         Cancel
       </Button>
-      <Button onClick={() => alert("Continue")}>Continue</Button>
+      <Button onClick={props.continuePurchasing}>Continue</Button>
     </OrderSummary>
   );
 };

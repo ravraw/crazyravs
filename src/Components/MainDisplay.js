@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import React from "react";
 // import DisplayItem from "./DisplayItem";
-import BurgerBuilder from "../Containers/BurgerBuilder/BurgerBuilder";
+// import BurgerBuilder from "../Containers/BurgerBuilder/BurgerBuilder";
+
+import BurgerMenu from "../Containers/BurgerMenu/BurgerMenu";
 
 const MainDisplay = styled.section`
   width: 90%;
@@ -29,80 +31,8 @@ const MainDisplay = styled.section`
 export default () => {
   return (
     <MainDisplay>
-      {/* <ul>
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-        <DisplayItem
-          imageName="burger"
-          burgerName="the boss burger"
-          burgerDescription=" doloribus.Impedit, voluptatum eum aut quis consequuntur nihil dolorem. Beatae temporibus, odit vitae at laborum aspernatur cumque commodi voluptas"
-        />
-      </ul> */}
-
-      <BurgerBuilder />
+      <BurgerMenu />
+      {/* <BurgerBuilder /> */}
     </MainDisplay>
   );
 };

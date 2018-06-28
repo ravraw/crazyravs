@@ -119,6 +119,9 @@ class BurgerBuilder extends Component {
       purchasing: false
     });
   };
+  continuePurchasingHandler = () => {
+    alert("Continue ----->");
+  };
 
   addIngredientHandler = (type, name) => {
     const oldCount =
@@ -183,6 +186,7 @@ class BurgerBuilder extends Component {
           remove={this.removeIngredientHandler}
           purchasingHandler={this.purchasingHandler}
           cancelPurchasing={this.cancelPurchasingHandler}
+          continuePurchasing={this.continuePurchasingHandler}
         />
 
         <Burger ingredients={this.state.ingredients} />

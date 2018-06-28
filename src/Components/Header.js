@@ -3,12 +3,12 @@ import React from "react";
 import HeaderRight from "./HeaderRight";
 
 const Header = styled.header`
-  height: 12%;
+  height: 15%;
   width: 100%;
   display: flex;
   position: relative;
-  background: tomato;
-  /* box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); */
+  /* background: tomato; */
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
 `;
 
 const HeaderLeft = styled.div`
