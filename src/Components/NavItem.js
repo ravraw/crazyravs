@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import NavLink from "./NavLink";
+// import { Link } from "react-router-dom";
 
 const NavItem = styled.li`
   list-style: none;
@@ -22,7 +23,12 @@ const NavItem = styled.li`
 export default props => {
   return (
     <NavItem>
-      <NavLink href={props.href} svgName={props.svgName} name={props.name} />
+      <NavLink
+        to={props.to}
+        href={props.href}
+        svgName={props.svgName}
+        name={props.name}
+      />
     </NavItem>
   );
 };

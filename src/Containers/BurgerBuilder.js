@@ -130,20 +130,20 @@ class BurgerBuilder extends Component {
         buildYourBurger: {
           ingredients: {
             ...this.state.ingredients
-          },
-          totalPrice: this.state.totalPrice
+          }
+        }
+      },
+      totalPrice: this.state.totalPrice,
+      customer: {
+        name: "Ravindra",
+        address: {
+          street: "Teststreet 1",
+          zip: "41324",
+          country: "Germany"
         },
-        customer: {
-          name: "Ravindra",
-          address: {
-            street: "Teststreet 1",
-            zip: "41324",
-            country: "Germany"
-          },
-          email: "r@r.com"
-        },
-        deliveryMethod: "takeaway"
-      }
+        email: "r@r.com"
+      },
+      deliveryMethod: "takeaway"
     };
     axios
       .post("/orders.json", order)
@@ -211,7 +211,15 @@ class BurgerBuilder extends Component {
     }
   };
 
+  componentDidMount() {
+    axios
+      .post("/buildYourBurger.json", BuildControlsData)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  }
+
   render() {
+    console.log(this.props);
     return (
       <Container>
         <BuildControls

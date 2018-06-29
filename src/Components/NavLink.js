@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import axios from "axios";
 
-const NavLink = styled.div`
+const Nav_Link = styled.div`
   width: 100%;
   height: 100%;
   /* color: black; */
@@ -28,11 +30,13 @@ const P = styled.p`
 
 export default props => {
   return (
-    <NavLink>
-      <Svg>
-        <use xlinkHref={`svg/sprite.svg#${props.svgName}`} />
-      </Svg>
-      <P>{props.name}</P>
-    </NavLink>
+    <Nav_Link>
+      <NavLink to={props.to}>
+        <Svg>
+          <use xlinkHref={`svg/sprite.svg#${props.svgName}`} />
+        </Svg>
+        <P>{props.name}</P>
+      </NavLink>
+    </Nav_Link>
   );
 };

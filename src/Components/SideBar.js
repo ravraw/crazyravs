@@ -30,11 +30,15 @@ export default () => {
     <SideBar>
       <Nav>
         <NavList>
-          <NavItem href="/" svgName="home" name="home" />
-          <NavItem href="/" svgName="burger" name="burgers" />
-          <NavItem href="/" svgName="food" name="sides" />
-          <NavItem href="/" svgName="food-and-restaurant" name="shakes" />
-          <NavItem href="/" svgName="food-1" name="combos" />
+          <NavItem to="/burgerBuilder" svgName="home" name="home" />
+          <NavItem to="/burgerMenu" svgName="burger" name="burgers" />
+          <NavItem to="/sidesMenu" svgName="food" name="sides" />
+          <NavItem
+            to="/shakeMenu"
+            svgName="food-and-restaurant"
+            name="shakes"
+          />
+          <NavItem to="/comboMenu" svgName="food-1" name="combos" />
         </NavList>
       </Nav>
     </SideBar>
