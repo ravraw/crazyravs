@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-import Burger from "../../Components/Burger/Burger";
-import BuildControls from "../../Components/Burger/BuildControls";
+import Burger from "../Components/Burger/Burger";
+import BuildControls from "../Components/Burger/BuildControls";
 
 const Container = styled.div`
   width: 100%;

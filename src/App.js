@@ -4,10 +4,8 @@ import Layout from "./Containers/Layout";
 
 import "./App.css";
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return <Layout />;
   }
 }
-
-export default App;
