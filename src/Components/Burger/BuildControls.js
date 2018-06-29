@@ -5,6 +5,7 @@ import ControlTypes from "./ControlTypes";
 
 import Modal from "../UI//Modal";
 import OrderSummary from "./OrderSummary";
+import Spinner from "../UI/Spinner";
 
 const BuildControls = styled.div`
   position: relative;
@@ -33,9 +34,9 @@ const OrderTotal = styled.div`
   height: auto;
   display: flex;
   /* border: 1px solid gray; */
-  border-radius: 10px 0px 0px 0px;
+  /* border-radius: 10px 0px 0px 0px; */
   grid-column: 1 / 3;
-  background: pink;
+  background: lightblue;
   justify-content: space-around;
   align-items: center;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
@@ -62,18 +63,27 @@ const OrderTotal = styled.div`
 `;
 
 export default props => {
+  let orderSummary = <Spinner />;
+
+  if (!props.loading) {
+    orderSummary = (
+      <OrderSummary
+        totalPrice={props.totalPrice.toFixed(2)}
+        ingredients={props.ingredients}
+        cancelPurchasing={props.cancelPurchasing}
+        continuePurchasing={props.continuePurchasing}
+        loading={props.loading}
+      />
+    );
+  }
+
   return (
     <BuildControls>
       <Modal
         purchasing={props.purchasing}
         cancelPurchasing={props.cancelPurchasing}
       >
-        <OrderSummary
-          totalPrice={props.totalPrice.toFixed(2)}
-          ingredients={props.ingredients}
-          cancelPurchasing={props.cancelPurchasing}
-          continuePurchasing={props.continuePurchasing}
-        />
+        {orderSummary}
       </Modal>
 
       <OrderTotal>

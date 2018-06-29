@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 import Burger from "../../Components/Burger/Burger";
 import BuildControls from "../../Components/Burger/BuildControls";
@@ -92,10 +93,10 @@ class BurgerBuilder extends Component {
       // cheese: 1,
       // meat: 1
     },
-
     totalPrice: 4,
     purchasable: false,
-    purchasing: false
+    purchasing: false,
+    loading: false
   };
 
   updatePurchaseState = ingredients => {
@@ -119,8 +120,45 @@ class BurgerBuilder extends Component {
       purchasing: false
     });
   };
+
   continuePurchasingHandler = () => {
-    alert("Continue ----->");
+    this.setState({
+      loading: true
+    });
+    const order = {
+      items: {
+        buildYourBurger: {
+          ingredients: {
+            ...this.state.ingredients
+          },
+          totalPrice: this.state.totalPrice
+        },
+        customer: {
+          name: "Ravindra",
+          address: {
+            street: "Teststreet 1",
+            zip: "41324",
+            country: "Germany"
+          },
+          email: "r@r.com"
+        },
+        deliveryMethod: "takeaway"
+      }
+    };
+    axios
+      .post("/orders.json", order)
+      .then(res =>
+        this.setState({
+          loading: false,
+          purchasing: false
+        })
+      )
+      .catch(err =>
+        this.setState({
+          loading: false,
+          purchasing: false
+        })
+      );
   };
 
   addIngredientHandler = (type, name) => {
@@ -187,6 +225,7 @@ class BurgerBuilder extends Component {
           purchasingHandler={this.purchasingHandler}
           cancelPurchasing={this.cancelPurchasingHandler}
           continuePurchasing={this.continuePurchasingHandler}
+          loading={this.state.loading}
         />
 
         <Burger ingredients={this.state.ingredients} />

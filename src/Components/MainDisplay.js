@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 // import DisplayItem from "./DisplayItem";
-// import BurgerBuilder from "../Containers/BurgerBuilder/BurgerBuilder";
+import BurgerBuilder from "../Containers/BurgerBuilder/BurgerBuilder";
 
 import BurgerMenu from "../Containers/BurgerMenu/BurgerMenu";
 
@@ -31,8 +31,8 @@ const MainDisplay = styled.section`
 export default () => {
   return (
     <MainDisplay>
-      <BurgerMenu />
-      {/* <BurgerBuilder /> */}
+      {/* <BurgerMenu /> */}
+      <BurgerBuilder />
     </MainDisplay>
   );
 };
