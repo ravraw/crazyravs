@@ -5,6 +5,8 @@ import axios from "axios";
 import Burger from "../Components/Burger/Burger";
 import BuildControls from "../Components/Burger/BuildControls";
 
+import { Connect } from "react-redux";
+
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -242,4 +244,8 @@ class BurgerBuilder extends Component {
   }
 }
 
-export default BurgerBuilder;
+const mapStoreToProps = store => {};
+
+const mapDispatchToProps = (dispatch = {});
+
+export default Connect(mapStoreToProps, mapDispatchToProps)(BurgerBuilder);

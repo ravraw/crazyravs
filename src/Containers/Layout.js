@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import Header from "../Components/Header";
 import MainContent from "../Components/MainContent";
@@ -33,9 +33,11 @@ class Layout extends Component {
         <MainContent>
           <SideBar />
           <MainDisplay>
-            <Route path="/burgerBuilder" component={BurgerBuilder} />
-            <Route path="/burgerMenu" component={BurgerMenu} />
-            <Route path="/shakeMenu" component={ShakeMenu} />
+            <Switch>
+              <Route path="/burgerBuilder" component={BurgerBuilder} />
+              <Route path="/burgerMenu" component={BurgerMenu} />
+              <Route path="/shakeMenu" component={ShakeMenu} />
+            </Switch>
           </MainDisplay>
         </MainContent>
         <Footer />
