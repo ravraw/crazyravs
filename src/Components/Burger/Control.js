@@ -46,7 +46,7 @@ export default props => {
         className="less"
         disabled={props.count < 1 || props.count === undefined}
         onClick={event => {
-          props.remove(props.controlType, props.label);
+          props.remove(props.controlType, props.label, props.price);
           console.log(props);
         }}
       >
@@ -54,7 +54,7 @@ export default props => {
       </button>
       <button
         className="more"
-        onClick={() => props.add(props.controlType, props.label)}
+        onClick={() => props.add(props.controlType, props.label, props.price)}
       >
         MORE
       </button>

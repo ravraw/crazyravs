@@ -5,11 +5,6 @@ const initialState = {
   totalPrice: 4
 };
 
-// const updatedState = {
-//   ...initialState.ingredients,
-//   ...initialState.totalPrice
-// };
-
 const burgerBuilderReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_INGREDIENT:
@@ -17,16 +12,23 @@ const burgerBuilderReducer = (state = initialState, action) => {
         ...state,
         ingredients: {
           ...state.ingredients,
-          [action.ingredientName]: state.ingredients[action.ingredientName] + 1
-        }
+          [action.payload.ingredientName]:
+            state.ingredients[action.payload.ingredientName] === undefined
+              ? 1
+              : state.ingredients[action.payload.ingredientName] + 1
+        },
+
+        totalPrice: state.totalPrice + action.payload.ingredientPrice
       };
     case actionTypes.REMOVE_INGREDIENT:
       return {
         ...state,
         ingredients: {
           ...state.ingredients,
-          [action.ingredientName]: state.ingredients[action.ingredientName] - 1
-        }
+          [action.payload.ingredientName]:
+            state.ingredients[action.payload.ingredientName] - 1
+        },
+        totalPrice: state.totalPrice - action.payload.ingredientPrice
       };
     default:
       return state;

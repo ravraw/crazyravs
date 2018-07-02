@@ -241,13 +241,24 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onIngredientAdded: ingName => {
-      dispatch({ type: actionTypes.ADD_INGREDIENT, ingredientName: ingName });
+    onIngredientAdded: (ingType, ingName, ingPrice) => {
+      dispatch({
+        type: actionTypes.ADD_INGREDIENT,
+        payload: {
+          ingredientType: ingType,
+          ingredientName: ingName,
+          ingredientPrice: ingPrice
+        }
+      });
     },
-    onIngredientRemoved: ingName => {
+    onIngredientRemoved: (ingType, ingName, ingPrice) => {
       dispatch({
         type: actionTypes.REMOVE_INGREDIENT,
-        ingredientName: ingName
+        payload: {
+          ingredientType: ingType,
+          ingredientName: ingName,
+          ingredientPrice: ingPrice
+        }
       });
     }
   };
