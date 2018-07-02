@@ -4,8 +4,9 @@ import axios from "axios";
 
 import Burger from "../Components/Burger/Burger";
 import BuildControls from "../Components/Burger/BuildControls";
+import * as actionTypes from "./Store/actions";
 
-import { Connect } from "react-redux";
+import { connect } from "react-redux";
 
 const Container = styled.div`
   width: 100%;
@@ -89,13 +90,6 @@ const BuildControlsData = [
 
 class BurgerBuilder extends Component {
   state = {
-    ingredients: {
-      // salad: 1,
-      // bacon: 1,
-      // cheese: 1,
-      // meat: 1
-    },
-    totalPrice: 4,
     purchasable: false,
     purchasing: false,
     loading: false
@@ -163,55 +157,50 @@ class BurgerBuilder extends Component {
       );
   };
 
-  addIngredientHandler = (type, name) => {
-    const oldCount =
-      this.state.ingredients[name] === undefined
-        ? 0
-        : this.state.ingredients[name];
-    const updatedCount = oldCount + 1;
-    const updatedIngredients = { ...this.state.ingredients };
-    updatedIngredients[name] = updatedCount;
+  // addIngredientHandler = (type, name) => {
+  //   const oldCount =
+  //     this.props.ings[name] === undefined ? 0 : this.props.ings[name];
+  //   const updatedCount = oldCount + 1;
+  //   const updatedIngredients = { ...this.props.ings };
+  //   updatedIngredients[name] = updatedCount;
 
-    const oldPrice = this.state.totalPrice;
+  //   const oldPrice = this.props.pri;
 
-    const itemPrice = BuildControlsData.filter(el => el.label === type).map(
-      el => el.options.filter(el => el.label === name).map(el => el.price)
-    );
+  //   const itemPrice = BuildControlsData.filter(el => el.label === type).map(
+  //     el => el.options.filter(el => el.label === name).map(el => el.price)
+  //   );
 
-    const newPrice = oldPrice + Number(itemPrice[0]);
+  //   const newPrice = oldPrice + Number(itemPrice[0]);
+  //   this.setState({
+  //     totalPrice: newPrice,
+  //     ingredients: updatedIngredients
+  //   });
+  //   this.updatePurchaseState(updatedIngredients);
+  // };
 
-    this.setState({
-      totalPrice: newPrice,
-      ingredients: updatedIngredients
-    });
-    this.updatePurchaseState(updatedIngredients);
-  };
+  // removeIngredientHandler = (type, name) => {
+  //   if (this.props.ings[name] !== undefined) {
+  //     const oldCount = this.props.ings[name];
+  //     const updatedCount = oldCount === 0 ? 0 : oldCount - 1;
+  //     const updatedIngredients = { ...this.props.ings };
+  //     updatedIngredients[name] = updatedCount;
+  //     const oldPrice = this.props.pri;
+  //     const itemPrice = BuildControlsData.filter(el => el.label === type).map(
+  //       el => el.options.filter(el => el.label === name).map(el => el.price)
+  //     );
+  //     let newPrice = oldPrice;
+  //     if (oldCount > 0) {
+  //       newPrice = oldPrice > 4 ? oldPrice - itemPrice : oldPrice; // need to chage to avoid hard coding
+  //     }
 
-  removeIngredientHandler = (controlType, controlName) => {
-    if (this.state.ingredients[controlName] !== undefined) {
-      const oldCount = this.state.ingredients[controlName];
-      const updatedCount = oldCount === 0 ? 0 : oldCount - 1;
-      const updatedIngredients = { ...this.state.ingredients };
-      updatedIngredients[controlName] = updatedCount;
-      const oldPrice = this.state.totalPrice;
-      const itemPrice = BuildControlsData.filter(
-        el => el.label === controlType
-      ).map(el =>
-        el.options.filter(el => el.label === controlName).map(el => el.price)
-      );
-      let newPrice = oldPrice;
-      if (oldCount > 0) {
-        newPrice = oldPrice > 4 ? oldPrice - itemPrice : oldPrice; // need to chage to avoid hard coding
-      }
-
-      console.log(itemPrice, newPrice);
-      this.setState({
-        totalPrice: newPrice,
-        ingredients: updatedIngredients
-      });
-      this.updatePurchaseState(updatedIngredients);
-    }
-  };
+  //     console.log(itemPrice, newPrice);
+  //     this.setState({
+  //       totalPrice: newPrice,
+  //       ingredients: updatedIngredients
+  //     });
+  //     this.updatePurchaseState(updatedIngredients);
+  //   }
+  // };
 
   componentDidMount() {
     axios
@@ -221,31 +210,50 @@ class BurgerBuilder extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <Container>
         <BuildControls
           purchasable={this.state.purchasable}
           purchasing={this.state.purchasing}
-          ingredients={this.state.ingredients}
-          totalPrice={this.state.totalPrice}
+          ingredients={this.props.ings}
+          totalPrice={this.props.pri}
           data={BuildControlsData}
-          add={this.addIngredientHandler}
-          remove={this.removeIngredientHandler}
+          add={this.props.onIngredientAdded}
+          remove={this.props.onIngredientRemoved}
           purchasingHandler={this.purchasingHandler}
           cancelPurchasing={this.cancelPurchasingHandler}
           continuePurchasing={this.continuePurchasingHandler}
           loading={this.state.loading}
         />
 
-        <Burger ingredients={this.state.ingredients} />
+        <Burger ingredients={this.props.ings} />
       </Container>
     );
   }
 }
 
-const mapStoreToProps = store => {};
+const mapStateToProps = state => {
+  return {
+    ings: state.ingredients,
+    pri: state.totalPrice
+  };
+};
 
-const mapDispatchToProps = (dispatch = {});
+const mapDispatchToProps = dispatch => {
+  return {
+    onIngredientAdded: ingName => {
+      dispatch({ type: actionTypes.ADD_INGREDIENT, ingredientName: ingName });
+    },
+    onIngredientRemoved: ingName => {
+      dispatch({
+        type: actionTypes.REMOVE_INGREDIENT,
+        ingredientName: ingName
+      });
+    }
+  };
+};
 
-export default Connect(mapStoreToProps, mapDispatchToProps)(BurgerBuilder);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BurgerBuilder);
