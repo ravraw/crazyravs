@@ -90,7 +90,7 @@ const BuildControlsData = [
 
 class BurgerBuilder extends Component {
   state = {
-    purchasable: false,
+    // purchasable: false,
     purchasing: false,
     loading: false
   };
@@ -102,7 +102,8 @@ class BurgerBuilder extends Component {
         return prev + curr;
       }, 0);
     console.log(sum);
-    this.setState({ purchasable: sum > 0 });
+    // this.setState({ purchasable: sum > 0 });
+    return sum > 0;
   };
 
   purchasingHandler = () => {
@@ -157,63 +158,18 @@ class BurgerBuilder extends Component {
       );
   };
 
-  // addIngredientHandler = (type, name) => {
-  //   const oldCount =
-  //     this.props.ings[name] === undefined ? 0 : this.props.ings[name];
-  //   const updatedCount = oldCount + 1;
-  //   const updatedIngredients = { ...this.props.ings };
-  //   updatedIngredients[name] = updatedCount;
-
-  //   const oldPrice = this.props.pri;
-
-  //   const itemPrice = BuildControlsData.filter(el => el.label === type).map(
-  //     el => el.options.filter(el => el.label === name).map(el => el.price)
-  //   );
-
-  //   const newPrice = oldPrice + Number(itemPrice[0]);
-  //   this.setState({
-  //     totalPrice: newPrice,
-  //     ingredients: updatedIngredients
-  //   });
-  //   this.updatePurchaseState(updatedIngredients);
-  // };
-
-  // removeIngredientHandler = (type, name) => {
-  //   if (this.props.ings[name] !== undefined) {
-  //     const oldCount = this.props.ings[name];
-  //     const updatedCount = oldCount === 0 ? 0 : oldCount - 1;
-  //     const updatedIngredients = { ...this.props.ings };
-  //     updatedIngredients[name] = updatedCount;
-  //     const oldPrice = this.props.pri;
-  //     const itemPrice = BuildControlsData.filter(el => el.label === type).map(
-  //       el => el.options.filter(el => el.label === name).map(el => el.price)
-  //     );
-  //     let newPrice = oldPrice;
-  //     if (oldCount > 0) {
-  //       newPrice = oldPrice > 4 ? oldPrice - itemPrice : oldPrice; // need to chage to avoid hard coding
-  //     }
-
-  //     console.log(itemPrice, newPrice);
-  //     this.setState({
-  //       totalPrice: newPrice,
-  //       ingredients: updatedIngredients
-  //     });
-  //     this.updatePurchaseState(updatedIngredients);
-  //   }
-  // };
-
   componentDidMount() {
-    axios
-      .post("/buildYourBurger.json", BuildControlsData)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+    // axios
+    //   .post("/buildYourBurger.json", BuildControlsData)
+    //   .then(res => console.log(res))
+    //   .catch(err => console.log(err));
   }
 
   render() {
     return (
       <Container>
         <BuildControls
-          purchasable={this.state.purchasable}
+          purchasable={this.updatePurchaseState(this.props.ings)}
           purchasing={this.state.purchasing}
           ingredients={this.props.ings}
           totalPrice={this.props.pri}
@@ -221,6 +177,7 @@ class BurgerBuilder extends Component {
           add={this.props.onIngredientAdded}
           remove={this.props.onIngredientRemoved}
           purchasingHandler={this.purchasingHandler}
+          // checkIfPurchasable={this.updatePurchaseState}
           cancelPurchasing={this.cancelPurchasingHandler}
           continuePurchasing={this.continuePurchasingHandler}
           loading={this.state.loading}
@@ -235,7 +192,8 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state => {
   return {
     ings: state.ingredients,
-    pri: state.totalPrice
+    pri: state.totalPrice,
+    purchasable: state.purchasable
   };
 };
 

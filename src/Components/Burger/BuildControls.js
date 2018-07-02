@@ -104,6 +104,8 @@ export default props => {
               label={el.label}
               count={props.ingredients[el.label]}
               price={el.price}
+              // purchasable={props.purchasable}
+              checkIfPurchasable={props.checkIfPurchasable}
             />
           ))}
         </ControlTypes>

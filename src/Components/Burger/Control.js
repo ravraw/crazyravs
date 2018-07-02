@@ -54,7 +54,9 @@ export default props => {
       </button>
       <button
         className="more"
-        onClick={() => props.add(props.controlType, props.label, props.price)}
+        onClick={() => {
+          props.add(props.controlType, props.label, props.price);
+        }}
       >
         MORE
       </button>
