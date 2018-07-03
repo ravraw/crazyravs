@@ -5,6 +5,7 @@ import axios from "axios";
 import Burger from "../Components/Burger/Burger";
 import BuildControls from "../Components/Burger/BuildControls";
 import * as actionTypes from "./Store/actions";
+import * as actionCreators from "./Store/actions";
 
 import { connect } from "react-redux";
 
@@ -200,24 +201,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onIngredientAdded: (ingType, ingName, ingPrice) => {
-      dispatch({
-        type: actionTypes.ADD_INGREDIENT,
-        payload: {
-          ingredientType: ingType,
-          ingredientName: ingName,
-          ingredientPrice: ingPrice
-        }
-      });
+      dispatch(actionCreators.add_ingredients(ingType, ingName, ingPrice));
     },
     onIngredientRemoved: (ingType, ingName, ingPrice) => {
-      dispatch({
-        type: actionTypes.REMOVE_INGREDIENT,
-        payload: {
-          ingredientType: ingType,
-          ingredientName: ingName,
-          ingredientPrice: ingPrice
-        }
-      });
+      dispatch(actionCreators.remove_ingredients(ingType, ingName, ingPrice));
     }
   };
 };
