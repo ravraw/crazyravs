@@ -2,8 +2,7 @@ import * as actionTypes from "./actions";
 
 const initialState = {
   ingredients: {},
-  totalPrice: 4,
-  purchasable: false
+  totalPrice: 4
 };
 
 const burgerBuilderReducer = (state = initialState, action) => {
