@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const HeadItem = styled.li`
 list-style: none;
@@ -28,7 +29,9 @@ const P = styled.p``;
 export default props => {
   return (
     <HeadItem>
-      <P>{props.name}</P>
+      <NavLink to="/login">
+        <P>{props.name}</P>
+      </NavLink>
     </HeadItem>
   );
 };

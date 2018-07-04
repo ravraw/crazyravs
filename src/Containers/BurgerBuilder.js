@@ -201,10 +201,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onIngredientAdded: (ingType, ingName, ingPrice) => {
-      dispatch(actionCreators.add_ingredients(ingType, ingName, ingPrice));
+      dispatch(actionCreators.add_ingredient(ingType, ingName, ingPrice));
     },
     onIngredientRemoved: (ingType, ingName, ingPrice) => {
-      dispatch(actionCreators.remove_ingredients(ingType, ingName, ingPrice));
+      dispatch(actionCreators.remove_ingredient(ingType, ingName, ingPrice));
     }
   };
 };

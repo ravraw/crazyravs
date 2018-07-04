@@ -11,6 +11,7 @@ import Footer from "../Components/Footer";
 import BurgerBuilder from "../Containers/BurgerBuilder";
 import BurgerMenu from "../Containers/BurgerMenu";
 import ShakeMenu from "../Containers/ShakeMenu";
+import Auth from "../Containers/Auth";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -37,6 +38,7 @@ class Layout extends Component {
               <Route path="/burgerBuilder" component={BurgerBuilder} />
               <Route path="/burgerMenu" component={BurgerMenu} />
               <Route path="/shakeMenu" component={ShakeMenu} />
+              <Route path="/login" component={Auth} />
             </Switch>
           </MainDisplay>
         </MainContent>

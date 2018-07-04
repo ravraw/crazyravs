@@ -40,7 +40,7 @@ export default () => {
       </HeadLogo>
       <HeadNav>
         <HeadList>
-          <HeadItem name="login" />
+          <HeadItem name="login" onClick="" />
           <HeadItem name="order" />
         </HeadList>
       </HeadNav>

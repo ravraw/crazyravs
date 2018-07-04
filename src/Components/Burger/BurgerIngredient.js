@@ -81,6 +81,9 @@ const Seeds2 = styled.div`
   }
   }
 `;
+const P = styled.p`
+  color: white;
+`;
 
 const Meat = styled.div`
   width: 80%;
@@ -88,6 +91,8 @@ const Meat = styled.div`
   background: linear-gradient(#7f3608, #702e05);
   margin: 2% auto;
   border-radius: 15px;
+  
+  }
 `;
 
 const Cheese = styled.div`
