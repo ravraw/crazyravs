@@ -10,6 +10,7 @@ import * as actionCreators from "./Store/actions";
 import { connect } from "react-redux";
 
 const Container = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
   font-family: "Lato", sans-serif;
@@ -88,6 +89,41 @@ const BuildControlsData = [
     type: "bacon"
   }
 ];
+
+const OrderTotal = styled.div`
+  position: sticky;
+  top: 0px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  /* border: 1px solid gray; */
+  /* border-radius: 10px 0px 0px 0px; */
+  grid-column: 1 / 3;
+  background: lightblue;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+
+  > h3 {
+    width: 60%;
+    text-align: center;
+    font-size: 1.5em;
+  }
+  > button {
+    height: auto;
+    width: auto;
+    margin: 10px;
+    padding: 10px;
+    font-size: 1em;
+    background: tomato;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    &:disabled {
+      background: gray;
+    }
+  }
+`;
 
 class BurgerBuilder extends Component {
   state = {
@@ -168,24 +204,35 @@ class BurgerBuilder extends Component {
 
   render() {
     return (
-      <Container>
-        <BuildControls
-          purchasable={this.updatePurchaseState(this.props.ings)}
-          purchasing={this.state.purchasing}
-          ingredients={this.props.ings}
-          totalPrice={this.props.pri}
-          data={BuildControlsData}
-          add={this.props.onIngredientAdded}
-          remove={this.props.onIngredientRemoved}
-          purchasingHandler={this.purchasingHandler}
-          // checkIfPurchasable={this.updatePurchaseState}
-          cancelPurchasing={this.cancelPurchasingHandler}
-          continuePurchasing={this.continuePurchasingHandler}
-          loading={this.state.loading}
-        />
+      <React.Fragment>
+        <OrderTotal>
+          <h3>Total Price : ${this.props.pri.toFixed(2)} </h3>
+          <button
+            onClick={this.purchasingHandler}
+            disabled={!this.updatePurchaseState(this.props.ings)}
+          >
+            PLACE ORDER
+          </button>
+        </OrderTotal>
+        <Container>
+          <BuildControls
+            // purchasable={this.updatePurchaseState(this.props.ings)}
+            purchasing={this.state.purchasing}
+            ingredients={this.props.ings}
+            totalPrice={this.props.pri}
+            data={BuildControlsData}
+            add={this.props.onIngredientAdded}
+            remove={this.props.onIngredientRemoved}
+            purchasingHandler={this.purchasingHandler}
+            // checkIfPurchasable={this.updatePurchaseState}
+            cancelPurchasing={this.cancelPurchasingHandler}
+            continuePurchasing={this.continuePurchasingHandler}
+            loading={this.state.loading}
+          />
 
-        <Burger ingredients={this.props.ings} />
-      </Container>
+          <Burger ingredients={this.props.ings} />
+        </Container>
+      </React.Fragment>
     );
   }
 }

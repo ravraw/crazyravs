@@ -91,16 +91,18 @@ const Meat = styled.div`
   background: linear-gradient(#7f3608, #702e05);
   margin: 2% auto;
   border-radius: 15px;
+  color:white;
   
   }
 `;
 
 const Cheese = styled.div`
   width: 90%;
-  height: 4.5%;
+  height: 5%;
   margin: 2% auto;
   background: linear-gradient(#f4d004, #d6bb22);
   border-radius: 20px;
+  font-size: 0.75em;
 `;
 
 const Salad = styled.div`
@@ -127,44 +129,28 @@ const BurgerIngredient = props => {
       </BreadTop>
     ),
     "bread-bottom": <BreadBottom />,
-    meat: <Meat />,
+    meat: (
+      <Meat>
+        <p>Beef</p>
+      </Meat>
+    ),
     cheese: <Cheese />,
     salad: <Salad />,
     bacon: <Bacon />,
-    option1: <Meat />,
-    option2: <Cheese />,
+    option1: (
+      <Meat>
+        <p>Chicken</p>
+      </Meat>
+    ),
+    option2: (
+      <Cheese>
+        <p>American Cheese</p>
+      </Cheese>
+    ),
     option3: <Salad />,
     option4: <Bacon />,
     option5: <BreadBottom />
   };
-
-  //   switch (props.type) {
-  //     case "bread-top":
-  //       ingredient = (
-  //         <BreadTop>
-  //           <Seeds1 />
-  //           <Seeds2 />
-  //         </BreadTop>
-  //       );
-  //       break;
-  //     case "bread-bottom":
-  //       ingredient = <BreadBottom />;
-  //       break;
-  //     case "meat":
-  //       ingredient = <Meat />;
-  //       break;
-  //     case "cheese":
-  //       ingredient = <Cheese />;
-  //       break;
-  //     case "salad":
-  //       ingredient = <Salad />;
-  //       break;
-  //     case "bacon":
-  //       ingredient = <Bacon />;
-  //       break;
-  //     default:
-  //       ingredient = null;
-  //   }
 
   return ingredientChoices[props.type];
 };

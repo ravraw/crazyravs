@@ -32,7 +32,7 @@ const HeadList = styled.ul`
   align-items: center;
 `;
 
-export default () => {
+export default props => {
   return (
     <HeaderRight>
       <HeadLogo>
@@ -40,8 +40,8 @@ export default () => {
       </HeadLogo>
       <HeadNav>
         <HeadList>
-          <HeadItem name="login" onClick="" />
-          <HeadItem name="order" />
+          <HeadItem name="login" to="/login" />
+          <HeadItem name="order" to="/order" />
         </HeadList>
       </HeadNav>
     </HeaderRight>

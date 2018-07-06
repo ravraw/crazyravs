@@ -15,17 +15,17 @@ const Nav_Link = styled.div`
 `;
 
 const Svg = styled.svg`
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 `;
 
 const P = styled.p`
-  font-size: 1.5em;
+  font-size: 1.4em;
   font-weight: bold;
   font-family: "Architects Daughter", cursive;
   text-transform: uppercase;
   /* border: 1px solid red; */
-  margin-top: 10px;
+  margin-top: 1px;
 `;
 
 export default props => {

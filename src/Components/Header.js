@@ -42,7 +42,7 @@ export default props => {
           </Svg>
         </div>
       </HeaderLeft>
-      <HeaderRight />
+      <HeaderRight isAuthenticated={props.isAuthenticated} />
     </Header>
   );
 };

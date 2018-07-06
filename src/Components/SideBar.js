@@ -23,6 +23,7 @@ const NavList = styled.ul`
   flex-direction: column;
   justify-content: space-around;
   align-items: stretch;
+  text-decoration: none;
 `;
 
 export default () => {
@@ -30,7 +31,7 @@ export default () => {
     <SideBar>
       <Nav>
         <NavList>
-          <NavItem to="/burgerBuilder" svgName="home" name="home" />
+          <NavItem to="/burgerBuilder" svgName="home" name="burger builder" />
           <NavItem to="/burgerMenu" svgName="burger" name="burgers" />
           <NavItem to="/sidesMenu" svgName="food" name="sides" />
           <NavItem

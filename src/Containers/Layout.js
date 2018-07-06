@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 import Header from "../Components/Header";
 import MainContent from "../Components/MainContent";
@@ -27,10 +28,14 @@ const Wrapper = styled.div`
 `;
 
 class Layout extends Component {
+  state = {
+    isAuthenticated: false
+  };
+
   render() {
     return (
       <Wrapper>
-        <Header />
+        <Header isAuthenticated={this.state.isAuthenticated} />
         <MainContent>
           <SideBar />
           <MainDisplay>
@@ -48,4 +53,9 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+export default withRouter(
+  connect(
+    null,
+    null
+  )(Layout)
+);

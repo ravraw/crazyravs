@@ -28,10 +28,10 @@ const P = styled.p``;
 
 export default props => {
   return (
-    <HeadItem>
-      <NavLink to="/login">
+    <NavLink to={props.to}>
+      <HeadItem>
         <P>{props.name}</P>
-      </NavLink>
-    </HeadItem>
+      </HeadItem>
+    </NavLink>
   );
 };
