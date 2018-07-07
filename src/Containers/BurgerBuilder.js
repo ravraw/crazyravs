@@ -10,6 +10,7 @@ import * as actionCreators from "./Store/actions";
 import { connect } from "react-redux";
 
 const Container = styled.div`
+  background: #ccc;
   position: relative;
   width: 100%;
   height: 100%;
@@ -96,10 +97,11 @@ const OrderTotal = styled.div`
   width: 100%;
   height: auto;
   display: flex;
+  margin: auto;
   /* border: 1px solid gray; */
   /* border-radius: 10px 0px 0px 0px; */
   grid-column: 1 / 3;
-  background: lightblue;
+  background: #bbb;
   align-items: center;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   z-index: 100;
