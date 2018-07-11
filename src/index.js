@@ -8,7 +8,7 @@ import thunk from "redux-thunk";
 
 import "./index.css";
 import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
+//import registerServiceWorker from "./registerServiceWorker";
 import axios from "axios";
 
 import reducer from "./Containers/Store/burgerBuilderReducer";
@@ -41,4 +41,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-registerServiceWorker();
+//registerServiceWorker();
